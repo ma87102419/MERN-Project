@@ -42,8 +42,8 @@ if (
   process.env.NODE_ENV === "staging"
 ) {
   app.get("*", (req, res) => {
-    res.send("Hello, welcome!");
-    //res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    //res.send("Hello, welcome!");
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
 }
 app.listen(port, () => {
