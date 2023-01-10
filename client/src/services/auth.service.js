@@ -3,18 +3,26 @@ const API_URL = "https://mern-project-production.up.railway.app/api/user";
 
 class AuthService {
   login(email, password) {
-    return axios.post(API_URL + "/login", { email, password });
+    try {
+      return axios.post(API_URL + "/login", { email, password });
+    } catch (e) {
+      console.log(e);
+    }
   }
   logout() {
     localStorage.removeItem("user");
   }
   register(username, email, password, role) {
-    return axios.post(API_URL + "/register", {
-      username,
-      email,
-      password,
-      role,
-    });
+    try {
+      return axios.post(API_URL + "/register", {
+        username,
+        email,
+        password,
+        role,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   getCurrentUser() {

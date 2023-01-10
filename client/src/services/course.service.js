@@ -32,12 +32,15 @@ class CourseService {
     } else {
       token = "";
     }
-
-    return axios.get(API_URL + "/student/" + _id, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    try {
+      return axios.get(API_URL + "/student/" + _id, {
+        headers: {
+          Authorization: token,
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   // 使用instructor id，來找到講師擁有的課程
@@ -48,12 +51,15 @@ class CourseService {
     } else {
       token = "";
     }
-
-    return axios.get(API_URL + "/instructor/" + _id, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    try {
+      return axios.get(API_URL + "/instructor/" + _id, {
+        headers: {
+          Authorization: token,
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   getCourseByName(name) {
@@ -63,12 +69,15 @@ class CourseService {
     } else {
       token = "";
     }
-
-    return axios.get(API_URL + "/findByName/" + name, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    try {
+      return axios.get(API_URL + "/findByName/" + name, {
+        headers: {
+          Authorization: token,
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   enroll(_id) {
@@ -78,16 +87,19 @@ class CourseService {
     } else {
       token = "";
     }
-
-    return axios.post(
-      API_URL + "/enroll/" + _id,
-      {},
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    );
+    try {
+      return axios.post(
+        API_URL + "/enroll/" + _id,
+        {},
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
