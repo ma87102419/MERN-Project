@@ -9,10 +9,11 @@ const passport = require("passport");
 require("./config/passport")(passport);
 const cors = require("cors");
 const path = require("path");
+const port = process.env.PORT || 8080;
 
 // Connect to MongoDB
 mongoose
-  .connect("mongodb://127.0.0.1:27017/mernDB")
+  .connect(process.env.MONGODB_CONNECTION)
   .then(() => {
     console.log("Connecting to mongodb...");
   })
@@ -44,6 +45,6 @@ if (
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
 }
-app.listen(8080, () => {
+app.listen(port, () => {
   console.log("Server is listening to port 8080...");
 });

@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start:dev": "concurrently \"yarn run server\" \"yarn run client\"",
+    "start:prod": "concurrently \"yarn run server\" \"yarn run client:build\"",
+    "server": "nodemon server.js",
+    "client": "node start-client.js",
+    "client:build": "node build-client.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +24,10 @@
     "mongoose": "^6.6.6",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "nodemon": "^2.0.20"
+  },
+  "engines": {
+    "node": "18.12.1"
   }
 }
