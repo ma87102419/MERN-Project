@@ -25,7 +25,7 @@ mongoose
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-// app.use(express.static(path.join(__dirname, "client", "build")));
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use("/api/user", authRoute);
 
@@ -41,7 +41,10 @@ if (
   process.env.NODE_ENV === "production" ||
   process.env.NODE_ENV === "staging"
 ) {
-  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.send("Hello, welcome!");
+    //res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
 }
 app.listen(port, () => {
   console.log("Server is listening to port 8080...");
