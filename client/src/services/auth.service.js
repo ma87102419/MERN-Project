@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "https://mern-project-production.up.railway.app/api/user";
+const API_URL = "https://mern-project-server.up.railway.app//api/user";
 
 class AuthService {
   login(email, password) {
